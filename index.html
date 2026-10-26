@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>موفقیت یوسف</title>
+<meta name="theme-color" content="#0B7A84">
+<meta name="description" content="دفتر روزانه‌ی موفقیت یوسف">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="موفقیت یوسف">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: one-column phone journal, RTL; turquoise for action, saffron for affirmation and dreams; fixed bottom tab bar */
+:root{
+  --bg:#EEF3F4; --surface:#FFFFFF; --surface-2:#E3ECEE; --ink:#132329; --muted:#5A6F76; --line:#D3DFE2;
+  --accent:#0B7A84; --accent-ink:#FFFFFF; --accent-soft:#D5EEF0;
+  --saffron:#C98A0E; --saffron-soft:#FBEFD2; --good:#2E8B57; --warn:#B4541F;
+  --display:"Lalezar","Vazirmatn",Tahoma,sans-serif; --body:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;
+  --r:14px; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#0C1518; --surface:#142127; --surface-2:#1B2C33; --ink:#E4EEF0; --muted:#93A9B0; --line:#26393F;
+  --accent:#3EC1CB; --accent-ink:#06262A; --accent-soft:#163A40;
+  --saffron:#F0B73E; --saffron-soft:#2E2614; --good:#5CC98A; --warn:#E8895A; color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.8;-webkit-tap-highlight-color:transparent}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+img{max-width:100%}
+[hidden]{display:none!important}
+#app{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:calc(env(safe-area-inset-top,0px) + 18px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 100px);display:flex;flex-direction:column;gap:16px}
+header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.brand{font-family:var(--display);color:var(--accent);font-size:1rem;line-height:1.4}
+header h1{font-family:var(--display);font-weight:400;font-size:1.9rem;line-height:1.3;margin:0;text-wrap:balance}
+.date{color:var(--muted);font-size:.9rem}
+.status{font-size:.75rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--good);display:inline-block}
+.dot.busy{background:var(--saffron)}
+.hbtns{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+button{font-family:inherit;font-size:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.iconbtn{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 12px;font-size:.85rem;white-space:nowrap}
+section.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+h2{font-size:1.05rem;font-weight:800;margin:0;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+h2 small{font-weight:500;color:var(--muted);font-size:.8rem}
+.hint{color:var(--muted);font-size:.85rem;margin:0}
+.aff{background:var(--saffron-soft);border:none!important}
+.aff .label{font-size:.75rem;letter-spacing:.02em;color:var(--saffron);font-weight:800}
+.aff blockquote{margin:0;font-size:1.25rem;font-weight:700;line-height:1.9;text-wrap:balance}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{border:none;border-radius:10px;padding:8px 14px;background:var(--accent);color:var(--accent-ink);font-weight:700}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.btn.soft{background:var(--surface-2);color:var(--ink)}
+.btn.saffron{background:var(--saffron);color:#fff}
+.btn.small{padding:4px 10px;font-size:.82rem}
+.btn.danger{background:transparent;color:var(--warn);border:1px solid var(--warn)}
+input[type=text],input[type=time],textarea,select{width:100%;font-family:inherit;font-size:1rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 12px;min-width:0}
+textarea{resize:vertical;min-height:90px;line-height:1.9}
+.nudge{background:var(--accent-soft);border-radius:var(--r);padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+.nudge .who{font-family:var(--display);font-size:1.05rem;color:var(--accent);white-space:nowrap}
+.nudge p{margin:0;font-weight:500}
+.mit{display:flex;gap:10px;align-items:center}
+.check{flex:none;width:26px;height:26px;border-radius:8px;border:2px solid var(--accent);background:transparent;display:grid;place-items:center;padding:0}
+.check.on{background:var(--accent)}
+.check.on::after{content:"";width:10px;height:6px;border-left:2.5px solid var(--accent-ink);border-bottom:2.5px solid var(--accent-ink);transform:rotate(-45deg) translate(1px,-1px)}
+ul.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+ul.list li{display:flex;gap:10px;align-items:center;min-width:0}
+ul.list li .t{flex:1;min-width:0;overflow-wrap:anywhere}
+ul.list li.done .t{text-decoration:line-through;color:var(--muted)}
+.x{background:none;border:none;color:var(--muted);font-size:1.3rem;padding:0 6px;line-height:1}
+.addrow{display:flex;gap:8px}
+.addrow input{flex:1}
+.bar{height:8px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .3s}
+.timer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--surface-2);border-radius:12px;padding:10px 14px}
+.timer .clock{font-family:var(--display);font-size:2rem;font-variant-numeric:tabular-nums;line-height:1.2}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+.stat b{display:block;font-family:var(--display);font-weight:400;font-size:1.6rem;line-height:1.3;color:var(--accent)}
+.stat span{font-size:.78rem;color:var(--muted)}
+.grat{display:flex;gap:10px;align-items:center}
+.grat .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--saffron-soft);color:var(--saffron);font-weight:800;display:grid;place-items:center;font-size:.85rem}
+.moods{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.moods button{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 2px;font-size:.8rem}
+.moods button.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.prayer textarea{min-height:160px;background:var(--surface-2);border-color:transparent}
+.goal{border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.goal h3{margin:0;font-size:1rem;overflow-wrap:anywhere}
+.goal .meta{font-size:.82rem;color:var(--muted)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.rem{display:flex;gap:10px;align-items:center}
+.rem .time{font-variant-numeric:tabular-nums;font-weight:800;color:var(--accent);min-width:3.4em}
+.rem.off .time,.rem.off .t{color:var(--muted)}
+.day{border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.day summary{cursor:pointer;display:flex;justify-content:space-between;gap:8px;font-weight:700;list-style:none}
+.day summary::-webkit-details-marker{display:none}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:.78rem;background:var(--surface-2);border-radius:99px;padding:2px 12px;color:var(--muted);border:1px solid transparent}
+button.chip.on{background:var(--saffron-soft);color:var(--saffron);border-color:var(--saffron);font-weight:700}
+.day h4{margin:.4em 0 0;font-size:.85rem;color:var(--accent)}
+.day p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+/* vision board */
+.board-hero{background:linear-gradient(160deg,var(--saffron-soft),var(--accent-soft));border:none!important}
+.board-hero h2{font-family:var(--display);font-weight:400;font-size:1.5rem}
+.board{columns:2;column-gap:10px}
+@media (min-width:560px){.board{columns:3}}
+.pin{break-inside:avoid;margin:0 0 10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.pin img{display:block;width:100%;height:auto;cursor:zoom-in}
+.pin .cap{padding:8px 10px;font-size:.85rem;font-weight:700;overflow-wrap:anywhere}
+.pin .cat{font-size:.72rem;color:var(--saffron);font-weight:800;padding:0 10px}
+.pin .acts{display:flex;justify-content:space-between;padding:4px 6px 8px}
+.pin .acts button{background:none;border:none;color:var(--muted);font-size:.78rem;padding:4px 6px}
+.upload{border:2px dashed var(--saffron);border-radius:12px;padding:18px;text-align:center;color:var(--saffron);font-weight:800;background:transparent;width:100%}
+.lightbox{position:fixed;inset:0;background:rgba(5,12,14,.92);z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:calc(env(safe-area-inset-top,0px) + 16px) max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 16px) max(16px,env(safe-area-inset-left,0px))}
+.lightbox img{max-height:70vh;max-width:100%;border-radius:10px;object-fit:contain}
+.lightbox .cap{color:#fff;font-size:1.1rem;font-weight:700;text-align:center;max-width:34em}
+.lightbox .row{justify-content:center}
+.lightbox input{max-width:22em}
+nav{position:fixed;inset:auto 0 0 0;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(4px,env(safe-area-inset-left,0px));padding-right:max(4px,env(safe-area-inset-right,0px));z-index:5}
+nav .in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+nav button{background:none;border:none;padding:9px 2px 10px;font-size:.78rem;color:var(--muted);font-weight:700;display:flex;flex-direction:column;align-items:center;gap:3px}
+nav button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav button.on{color:var(--accent)}
+.toast{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 16px;border-radius:12px;z-index:40;width:max-content;max-width:calc(100% - 32px);display:flex;gap:12px;align-items:center;box-shadow:0 8px 30px rgba(0,0,0,.25)}
+.toast button{background:var(--accent);color:var(--accent-ink);border:none;border-radius:8px;padding:4px 10px;font-weight:700;flex:none}
+.empty{color:var(--muted);font-size:.9rem;text-align:center;padding:8px}
+.settings{display:flex;flex-direction:column;gap:10px}
+.settings label{font-size:.85rem;font-weight:700;display:flex;flex-direction:column;gap:4px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<nav aria-label="بخش‌ها"><div class="in" id="nav"></div></nav>
+<div id="toast" class="toast" hidden></div>
+<div id="lightbox" class="lightbox" hidden></div>
+<input type="file" id="pick" accept="image/*" multiple hidden>
+<input type="file" id="restore" accept="application/json,.json" hidden>
+
+<script>
+(function(){
+/* ---------- helpers ---------- */
+const $ = id => document.getElementById(id);
+const fa = n => Number(n).toLocaleString('fa-IR');
+const esc = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad = n => String(n).padStart(2,'0');
+const keyOf = d => d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const faDate = (k,opt) => { const [y,m,d]=k.split('-').map(Number); try{return new Intl.DateTimeFormat('fa-IR-u-ca-persian',opt||{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date(y,m-1,d));}catch(e){return k;} };
+const faTime = t => t ? t.split(':').map(x=>fa(Number(x)).padStart(2,'۰')).join(':') : '';
+const dayNum = k => { const [y,m,d]=k.split('-').map(Number); return Math.floor(Date.UTC(y,m-1,d)/864e5); };
+
+/* ---------- content ---------- */
+const AFF = [
+ "{b} هر روز ارزش بیشتری برای مشتری‌هایش خلق می‌کند و درآمدش به‌طور طبیعی رشد می‌کند.",
+ "من مدیری تصمیم‌گیر و آرام هستم و {b} را با اطمینان به جلو می‌برم.",
+ "مشتری‌های درست، {b} را پیدا می‌کنند و با رضایت به دیگران معرفی‌اش می‌کنند.",
+ "هر کاری که امروز برای {b} انجام می‌دهم، بذری است که حتماً به ثمر می‌نشیند.",
+ "من لایق موفقیت مالی هستم و {b} منبع برکت برای من و دیگران است.",
+ "فرصت‌های تازه هر روز به سمت {b} می‌آیند و من آن‌ها را می‌بینم و می‌گیرم.",
+ "من از اشتباه‌هایم سریع یاد می‌گیرم و {b} هر ماه قوی‌تر از ماه قبل است.",
+ "پول با احترام و فراوانی وارد {b} می‌شود و من آن را عاقلانه مدیریت می‌کنم.",
+ "تمرکز من روی کارهای مهم است؛ همین تمرکز {b} را متمایز می‌کند.",
+ "من با شجاعت قیمت درست کارم را می‌گیرم چون ارزش واقعی ارائه می‌دهم.",
+ "{b} با هر روز کاری، شناخته‌شده‌تر و معتبرتر می‌شود.",
+ "من آدم‌های درست را جذب می‌کنم؛ همکاران و شریک‌هایی که {b} را بزرگ‌تر می‌کنند.",
+ "مشکلات {b} برای من فرصت رشد هستند و من راه‌حل را پیدا می‌کنم.",
+ "من امروز یک قدم مشخص و عملی برای رشد {b} برمی‌دارم و همین کافی است.",
+ "خدا در کنار من است و راه‌های رشد {b} را برایم باز می‌کند.",
+ "من به توانایی‌هایم ایمان دارم؛ {b} نتیجه‌ی همین ایمان و تلاش است.",
+ "فروش {b} هر هفته بیشتر می‌شود چون من هر روز پیگیری می‌کنم.",
+ "من وقتم را ارزشمند می‌دانم و آن را صرف کارهایی می‌کنم که {b} را جلو می‌برند.",
+ "{b} کیفیتی دارد که مشتری‌ها به خاطرش برمی‌گردند.",
+ "ذهن من پر از ایده‌های خلاق برای رشد {b} است.",
+ "من با نظم و پیوستگی کار می‌کنم و نظم من {b} را پایدار می‌کند.",
+ "موفقیت {b} برای من و خانواده‌ام آرامش و آزادی می‌آورد.",
+ "من بدون ترس تصمیم می‌گیرم، اجرا می‌کنم و نتیجه را بهتر می‌کنم.",
+ "هر «نه» مرا به یک «بله»ی بزرگ‌تر برای {b} نزدیک‌تر می‌کند.",
+ "من رهبر الهام‌بخشی هستم و انرژی مثبتم به {b} جان می‌دهد.",
+ "{b} در جای درست، زمان درست و با آدم‌های درست رشد می‌کند.",
+ "من شکرگزار هر مشتری هستم و این شکرگزاری مشتری‌های بیشتری می‌آورد.",
+ "امروز روز خوبی برای {b} است؛ من آماده‌ی دریافت نتیجه‌های خوب هستم.",
+ "من رقابت نمی‌کنم، خلق می‌کنم؛ {b} جایگاه منحصربه‌فرد خودش را دارد.",
+ "درآمد {b} از چند مسیر سالم و پایدار جریان دارد."
+];
+const PRAYER_PROMPTS = ["خدایا، امروز دلم می‌خواهد برایت بگویم که…","خدایا، بابت این‌ها ازت ممنونم…","خدایا، در این کار به کمکت نیاز دارم…","خدایا، این نگرانی را به تو می‌سپارم…","خدایا، امروز نشانه‌ی حضورت را این‌جا دیدم…"];
+const MOODS = ["خیلی سخت","سخت","معمولی","خوب","عالی"];
+const CATS = ["کسب‌وکار","مالی","خانواده","سلامتی","معنوی","سفر","خانه","یادگیری"];
+
+/* ---------- state & storage ---------- */
+const TODAY = keyOf(new Date());
+const LS = 'movafaghiat-yousef-v1';
+const S = { settings:{name:'یوسف',business:'',goals:[],reminders:[]}, days:{}, tab:'today', boardCat:'' };
+const emptyDay = k => ({date:k,mit:'',mitDone:false,tasks:[],wins:[],gratitude:['','',''],prayer:'',mood:0,lesson:'',tomorrow:'',affShift:0});
+const day = k => (S.days[k] ||= emptyDay(k));
+function loadLocal(){ try{ const j=JSON.parse(localStorage.getItem(LS)||'null'); if(j){ Object.assign(S.settings,j.settings||{}); S.days=j.days||{}; } }catch(e){} }
+let saveT=null;
+function persist(){
+  setStatus('busy','در حال ذخیره…'); clearTimeout(saveT);
+  saveT=setTimeout(()=>{ try{ localStorage.setItem(LS, JSON.stringify({settings:S.settings,days:S.days})); setStatus('','ذخیره شد'); }catch(e){ setStatus('busy','ذخیره نشد؛ حافظه پر است'); } },400);
+}
+function setStatus(kind,text){ const el=$('status'); if(el) el.innerHTML='<span class="dot '+kind+'"></span>'+esc(text); }
+loadLocal(); day(TODAY);
+if(navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(()=>{});
+
+/* images in IndexedDB */
+const IDB = {
+  db:null,
+  open(){ return new Promise((res,rej)=>{ const r=indexedDB.open('movafaghiat-yousef',1); r.onupgradeneeded=()=>r.result.createObjectStore('images',{keyPath:'id'}); r.onsuccess=()=>{this.db=r.result;res();}; r.onerror=()=>rej(r.error); }); },
+  tx(mode){ return this.db.transaction('images',mode).objectStore('images'); },
+  all(){ return new Promise((res,rej)=>{ const r=this.tx('readonly').getAll(); r.onsuccess=()=>res(r.result||[]); r.onerror=()=>rej(r.error); }); },
+  put(o){ return new Promise((res,rej)=>{ const r=this.tx('readwrite').put(o); r.onsuccess=()=>res(); r.onerror=()=>rej(r.error); }); },
+  del(id){ return new Promise((res,rej)=>{ const r=this.tx('readwrite').delete(id); r.onsuccess=()=>res(); r.onerror=()=>rej(r.error); }); },
+  clear(){ return new Promise((res,rej)=>{ const r=this.tx('readwrite').clear(); r.onsuccess=()=>res(); r.onerror=()=>rej(r.error); }); }
+};
+let IMAGES=[]; const URLS={};
+function urlFor(im){ return URLS[im.id] ||= URL.createObjectURL(im.blob); }
+async function loadImages(){ try{ await IDB.open(); IMAGES=(await IDB.all()).sort((a,b)=>b.created-a.created); }catch(e){ IMAGES=[]; } }
+
+async function shrink(file){
+  const MAX=1400;
+  const bmp = await (window.createImageBitmap ? createImageBitmap(file).catch(()=>null) : null);
+  let src=bmp, w, h;
+  if(!src){ src=await new Promise((res,rej)=>{ const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=URL.createObjectURL(file); }); }
+  w=src.width; h=src.height; const s=Math.min(1,MAX/Math.max(w,h));
+  const c=document.createElement('canvas'); c.width=Math.round(w*s); c.height=Math.round(h*s);
+  c.getContext('2d').drawImage(src,0,0,c.width,c.height);
+  return await new Promise(res=>c.toBlob(b=>res(b||file),'image/jpeg',0.85));
+}
+
+/* ---------- sharing ---------- */
+async function shareFile(blob,name,text){
+  const file=new File([blob],name,{type:blob.type||'image/jpeg'});
+  try{
+    if(navigator.canShare && navigator.canShare({files:[file]})){ await navigator.share({files:[file],text:text||'',title:'موفقیت یوسف'}); return; }
+  }catch(e){ if(e && e.name==='AbortError') return; }
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove();
+  toast('اشتراک مستقیم پشتیبانی نشد؛ فایل دانلود شد.');
+}
+async function shareText(text){
+  try{ if(navigator.share){ await navigator.share({text,title:'موفقیت یوسف'}); return; } }catch(e){ if(e && e.name==='AbortError') return; }
+  try{ await navigator.clipboard.writeText(text); toast('متن کپی شد؛ هر جا خواستی بفرست.'); }catch(e){ toast('اشتراک‌گذاری روی این دستگاه پشتیبانی نمی‌شود.'); }
+}
+function cssVar(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+async function boardCollage(list){
+  try{ await document.fonts.load('48px Lalezar'); await document.fonts.load('700 30px Vazirmatn'); }catch(e){}
+  const W=1080,H=1350,c=document.createElement('canvas'); c.width=W; c.height=H; const g=c.getContext('2d');
+  g.fillStyle='#0B7A84'; g.fillRect(0,0,W,H);
+  g.fillStyle='#F0B73E'; g.textAlign='center'; g.direction='rtl';
+  g.font='72px Lalezar, Vazirmatn, Tahoma'; g.fillText('تابلوی آرزوهای '+(S.settings.name||'من'),W/2,120);
+  const imgs=list.slice(0,9), n=imgs.length, cols=n<=1?1:n<=4?2:3, rows=Math.ceil(n/cols);
+  const top=170, gap=14, m=40, cw=(W-2*m-(cols-1)*gap)/cols, ch=(H-top-m-80-(rows-1)*gap)/rows;
+  for(let i=0;i<n;i++){
+    const im=imgs[i]; const bmp=await createImageBitmap(im.blob).catch(()=>null); if(!bmp) continue;
+    const x=W-m-(i%cols+1)*cw-(i%cols)*gap, y=top+Math.floor(i/cols)*(ch+gap);
+    const s=Math.max(cw/bmp.width,ch/bmp.height), sw=cw/s, sh=ch/s;
+    g.save(); g.beginPath(); if(g.roundRect) g.roundRect(x,y,cw,ch,18); else g.rect(x,y,cw,ch); g.clip();
+    g.drawImage(bmp,(bmp.width-sw)/2,(bmp.height-sh)/2,sw,sh,x,y,cw,ch);
+    if(im.caption){ g.fillStyle='rgba(0,0,0,.45)'; g.fillRect(x,y+ch-62,cw,62); g.fillStyle='#fff'; g.font='700 28px Vazirmatn, Tahoma'; g.fillText(im.caption.slice(0,28),x+cw/2,y+ch-20,cw-20); }
+    g.restore();
+  }
+  g.fillStyle='#FFFFFF'; g.font='700 30px Vazirmatn, Tahoma'; g.fillText(affirmation(),W/2,H-50,W-80);
+  return await new Promise(res=>c.toBlob(res,'image/jpeg',0.9));
+}
+
+/* ---------- logic ---------- */
+function hasContent(d){ return !!(d && (d.mitDone || d.wins.length || d.gratitude.some(g=>g.trim()) || d.prayer.trim() || d.tasks.some(t=>t.done) || d.lesson.trim())); }
+function streak(){ let n=0; const c=new Date(); if(!hasContent(S.days[keyOf(c)])) c.setDate(c.getDate()-1); while(hasContent(S.days[keyOf(c)])){ n++; c.setDate(c.getDate()-1); } return n; }
+function affirmation(){ const d=day(TODAY); const i=((dayNum(TODAY)+(d.affShift||0))%AFF.length+AFF.length)%AFF.length; const b=S.settings.business.trim(); return AFF[i].replace(/\{b\}/g, b||'کسب‌وکارم'); }
+function nudge(){
+  const d=day(TODAY), h=new Date().getHours(), open=d.tasks.filter(t=>!t.done), name=S.settings.name.trim();
+  if(h>=21 && !d.wins.length) return 'شب شده. قبل از خواب برو بخش «دل‌نوشته» و دست‌کم سه اتفاق خوب امروز رو بنویس.';
+  if(!d.mit) return (name?name+'، ':'')+'اول از همه «مهم‌ترین کار امروز» رو بنویس؛ کاری که اگه فقط همون انجام بشه، امروز روز موفقی بوده.';
+  if(!d.mitDone){
+    if(h<12) return 'الان بهترین وقت برای «'+d.mit+'» است. تایمر ۲۵ دقیقه رو بزن و فقط روی همین کار کن.';
+    if(h<19) return 'هنوز «'+d.mit+'» مونده. گوشی رو کنار بذار و کوچیک‌ترین قدمش رو همین الان شروع کن.';
+    return '«'+d.mit+'» امروز انجام نشد. ایرادی نداره؛ بنویسش توی «مهم‌ترین کار فردا» تا اولین کار صبحت باشه.';
+  }
+  if(open.length) return 'مهم‌ترین کار انجام شد، آفرین. حالا برو سراغ «'+open[0].t+'».';
+  if(d.tasks.length) return 'همه‌ی کارهای امروز تموم شد. حالا اتفاقات خوب و سپاسگزاری‌هات رو ثبت کن.';
+  return 'مهم‌ترین کار امروز انجام شد. اگه انرژی داری، یک کار کوچیک دیگه برای رشد کسب‌وکارت اضافه کن.';
+}
+function nextReminder(){ const now=new Date(), cur=pad(now.getHours())+':'+pad(now.getMinutes()); return S.settings.reminders.filter(r=>r.on!==false).sort((a,b)=>a.time.localeCompare(b.time)).find(r=>r.time>cur)||null; }
+function daySummary(k){
+  const d=S.days[k]; const g=d.gratitude.filter(x=>x.trim()); const L=['موفقیت یوسف | '+faDate(k)];
+  if(d.mit) L.push('\nمهم‌ترین کار: '+d.mit+(d.mitDone?' ✔':''));
+  if(d.wins.length) L.push('\nاتفاقات خوب:\n'+d.wins.map(w=>'• '+w).join('\n'));
+  if(g.length) L.push('\nسپاسگزارم بابت:\n'+g.map(w=>'• '+w).join('\n'));
+  if(d.lesson) L.push('\nدرس امروز: '+d.lesson);
+  return L.join('\n');
+}
+
+/* ---------- timer ---------- */
+const T={left:25*60,run:false,id:null,end:0};
+function tick(){ if(!T.run) return; T.left=Math.max(0,Math.round((T.end-Date.now())/1000)); if(T.left<=0){ T.run=false; clearInterval(T.id); T.left=25*60; notify('۲۵ دقیقه تمرکز تموم شد. ۵ دقیقه استراحت کن، بعد ادامه بده.'); } paintTimer(); }
+function paintTimer(){ const el=$('clock'); if(el) el.textContent=fa(Math.floor(T.left/60)).padStart(2,'۰')+':'+fa(T.left%60).padStart(2,'۰'); const b=$('tbtn'); if(b) b.textContent=T.run?'توقف':'شروع تمرکز'; }
+
+/* ---------- toast, notifications, reminders ---------- */
+let toastT=null;
+function toast(msg){ const el=$('toast'); el.innerHTML='<span>'+esc(msg)+'</span><button type="button" data-a="closeToast">باشه</button>'; el.hidden=false; clearTimeout(toastT); toastT=setTimeout(()=>{el.hidden=true},10000); }
+function notify(msg){
+  toast(msg);
+  try{ if('Notification' in window && Notification.permission==='granted'){
+    if(navigator.serviceWorker && navigator.serviceWorker.controller) navigator.serviceWorker.ready.then(r=>r.showNotification('موفقیت یوسف',{body:msg,icon:'icon-192.png',lang:'fa',dir:'rtl'}));
+    else new Notification('موفقیت یوسف',{body:msg,icon:'icon-192.png'});
+  } }catch(e){}
+}
+const fired=new Set();
+function checkReminders(){ const now=new Date(), cur=pad(now.getHours())+':'+pad(now.getMinutes()); S.settings.reminders.forEach(r=>{ const k=keyOf(now)+r.id; if(r.on!==false && r.time===cur && !fired.has(k)){ fired.add(k); notify('یادآور: '+r.text); } }); }
+setInterval(checkReminders,20000);
+
+/* ---------- install ---------- */
+let deferredInstall=null;
+const isStandalone = () => window.matchMedia('(display-mode: standalone)').matches || navigator.standalone===true;
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+window.addEventListener('beforeinstallprompt',e=>{ e.preventDefault(); deferredInstall=e; render(); });
+window.addEventListener('appinstalled',()=>{ deferredInstall=null; toast('برنامه نصب شد.'); render(); });
+
+/* ---------- views ---------- */
+const ICONS={
+ today:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+ heart:'<svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>',
+ board:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="16" cy="9" r="1.5"/></svg>',
+ goals:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg>',
+ book:'<svg viewBox="0 0 24 24"><path d="M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 1-4-4z"/><path d="M9 8h6M9 12h6"/></svg>'
+};
+const TABS=[['today','امروز'],['heart','دل‌نوشته'],['board','آرزوها'],['goals','اهداف'],['book','دفتر']];
+
+function header(){
+  const n=S.settings.name.trim(); const h=new Date().getHours();
+  const hi = h<5?'شب بخیر':h<12?'صبح بخیر':h<17?'روز بخیر':h<21?'عصر بخیر':'شب بخیر';
+  const canInstall = !isStandalone() && (deferredInstall || isIOS);
+  return `<header><div><div class="brand">موفقیت یوسف</div><h1>${hi}${n?'، '+esc(n):''}</h1><div class="date">${esc(faDate(TODAY))}</div>
+  <div class="status" id="status"><span class="dot"></span>ذخیره شد</div></div>
+  <div class="hbtns"><button class="iconbtn" type="button" data-a="tab" data-v="settings">تنظیمات</button>
+  ${canInstall?'<button class="btn small" type="button" data-a="install">نصب برنامه</button>':''}</div></header>`;
+}
+
+function viewToday(){
+  const d=day(TODAY), done=d.tasks.filter(t=>t.done).length, tot=d.tasks.length, nr=nextReminder();
+  return `
+  <section class="card aff"><div class="label">جمله‌ی تأکیدی امروز برای کسب‌وکارت</div>
+    <blockquote>${esc(affirmation())}</blockquote>
+    <div class="row"><button class="btn soft small" type="button" data-a="affNext">یک جمله‌ی دیگر</button>
+    <button class="btn soft small" type="button" data-a="affShare">اشتراک‌گذاری</button></div>
+    ${S.settings.business?'':'<p class="hint">اسم کسب‌وکارت رو در «تنظیمات» بنویس تا جمله‌ها شخصی بشن.</p>'}
+  </section>
+  <div class="nudge"><span class="who">مدیرت:</span><p>${esc(nudge())}</p></div>
+  <div class="stats">
+    <div class="stat"><b>${fa(streak())}</b><span>روز پشت‌سرهم</span></div>
+    <div class="stat"><b>${fa(done+(d.mitDone?1:0))}/${fa(tot+(d.mit?1:0))}</b><span>کار انجام‌شده</span></div>
+    <div class="stat"><b>${fa(d.wins.length)}</b><span>اتفاق خوب</span></div>
+  </div>
+  <section class="card"><h2>مهم‌ترین کار امروز <small>فقط یکی</small></h2>
+    <div class="mit"><button type="button" class="check ${d.mitDone?'on':''}" data-a="mitToggle" aria-label="انجام شد" aria-pressed="${d.mitDone}"></button>
+    <input id="mit" type="text" value="${esc(d.mit)}" placeholder="مثلاً: تماس با ۵ مشتری بالقوه"></div>
+    <div class="timer"><div class="clock" id="clock"></div><div class="row">
+      <button class="btn small" id="tbtn" type="button" data-a="timer">شروع تمرکز</button>
+      <button class="btn soft small" type="button" data-a="timerReset">از اول</button></div></div>
+  </section>
+  <section class="card"><h2>کارهای امروز <small>${tot?fa(done)+' از '+fa(tot):'حداکثر ۵ کار'}</small></h2>
+    ${tot?`<div class="bar"><i style="width:${Math.round(done/tot*100)}%"></i></div>`:''}
+    <ul class="list">${d.tasks.map(t=>`<li class="${t.done?'done':''}"><button type="button" class="check ${t.done?'on':''}" data-a="taskToggle" data-id="${t.id}" aria-label="انجام شد" aria-pressed="${t.done}"></button><span class="t">${esc(t.t)}</span><button class="x" type="button" data-a="taskDel" data-id="${t.id}" aria-label="حذف">×</button></li>`).join('')}</ul>
+    <form class="addrow" data-f="task"><input id="newTask" type="text" placeholder="یک کار مشخص و عملی…"><button class="btn" type="submit">افزودن</button></form>
+  </section>
+  <section class="card"><h2>یادآور بعدی <button class="btn ghost small" type="button" data-a="tab" data-v="goals">مدیریت یادآورها</button></h2>
+    ${nr?`<div class="rem"><span class="time">${faTime(nr.time)}</span><span class="t">${esc(nr.text)}</span></div>`:'<p class="hint">یادآور دیگری برای امروز نمانده.</p>'}
+  </section>`;
+}
+
+function viewHeart(){
+  const d=day(TODAY), pi=dayNum(TODAY)%PRAYER_PROMPTS.length;
+  return `
+  <section class="card"><h2>اتفاقات خوب امروز <small>${fa(d.wins.length)} مورد</small></h2>
+    <p class="hint">هر چیز خوبی، حتی کوچیک: یک فروش، یک تماس خوب، یک لبخند.</p>
+    <ul class="list">${d.wins.map((w,i)=>`<li><span class="grat"><span class="n">${fa(i+1)}</span></span><span class="t">${esc(w)}</span><button class="x" type="button" data-a="winDel" data-i="${i}" aria-label="حذف">×</button></li>`).join('')}</ul>
+    <form class="addrow" data-f="win"><input id="newWin" type="text" placeholder="امروز این اتفاق خوب افتاد…"><button class="btn" type="submit">ثبت</button></form>
+  </section>
+  <section class="card"><h2>سپاسگزاری <small>سه مورد</small></h2>
+    ${d.gratitude.map((g,i)=>`<div class="grat"><span class="n">${fa(i+1)}</span><input type="text" id="g${i}" data-g="${i}" value="${esc(g)}" placeholder="بابت … سپاسگزارم"></div>`).join('')}
+  </section>
+  <section class="card prayer"><h2>گفتگو با خدا</h2>
+    <p class="hint">${esc(PRAYER_PROMPTS[pi])}</p>
+    <textarea id="prayer" placeholder="هر چه در دلت هست، این‌جا بنویس…">${esc(d.prayer)}</textarea>
+    <p class="hint">این بخش خصوصی است و در اشتراک‌گذاری روزانه نمی‌آید.</p>
+  </section>
+  <section class="card"><h2>مرور شب</h2>
+    <p class="hint">امروز چطور گذشت؟</p>
+    <div class="moods">${MOODS.map((m,i)=>`<button type="button" data-a="mood" data-v="${i+1}" class="${d.mood===i+1?'on':''}" aria-pressed="${d.mood===i+1}">${m}</button>`).join('')}</div>
+    <label class="hint" for="lesson">درس امروز من:</label>
+    <input id="lesson" type="text" value="${esc(d.lesson)}" placeholder="چه چیزی یاد گرفتم؟">
+    <label class="hint" for="tomorrow">مهم‌ترین کار فردا:</label>
+    <input id="tomorrow" type="text" value="${esc(d.tomorrow)}" placeholder="فردا اول از همه…">
+    <button class="btn ghost" type="button" data-a="dayShare" data-v="${TODAY}">اشتراک‌گذاری خلاصه‌ی امروز</button>
+  </section>`;
+}
+
+function viewBoard(){
+  const list = S.boardCat ? IMAGES.filter(i=>i.cat===S.boardCat) : IMAGES;
+  const used = CATS.filter(c=>IMAGES.some(i=>i.cat===c));
+  return `
+  <section class="card board-hero"><h2>تابلوی آرزوهای ${esc(S.settings.name||'من')}</h2>
+    <p class="hint">عکس آرزوهایت را از گالری اضافه کن: خانه، ماشین، سفر، رشد کسب‌وکار. هر روز نگاهشان کن و حسِ رسیدن به آن‌ها را تجربه کن.</p>
+    <button class="upload" type="button" data-a="pick">+ افزودن عکس از گالری</button>
+    ${IMAGES.length?'<button class="btn saffron" type="button" data-a="boardShare">اشتراک‌گذاری کل تابلو به‌صورت یک عکس</button>':''}
+  </section>
+  ${used.length>1?`<div class="chips"><button type="button" class="chip ${S.boardCat?'':'on'}" data-a="cat" data-v="">همه</button>${used.map(c=>`<button type="button" class="chip ${S.boardCat===c?'on':''}" data-a="cat" data-v="${c}">${c}</button>`).join('')}</div>`:''}
+  ${list.length?`<div class="board">${list.map(im=>`<figure class="pin">
+      <img src="${urlFor(im)}" alt="${esc(im.caption||'آرزو')}" data-a="open" data-id="${im.id}" loading="lazy">
+      ${im.cat?`<div class="cat">${esc(im.cat)}</div>`:''}
+      ${im.caption?`<figcaption class="cap">${esc(im.caption)}</figcaption>`:''}
+      <div class="acts"><button type="button" data-a="open" data-id="${im.id}">ویرایش</button><button type="button" data-a="imgShare" data-id="${im.id}">اشتراک</button></div>
+    </figure>`).join('')}</div>`:'<p class="empty">هنوز عکسی در تابلو نیست.</p>'}`;
+}
+
+function viewGoals(){
+  const g=S.settings.goals, r=[...S.settings.reminders].sort((a,b)=>a.time.localeCompare(b.time));
+  return `
+  <section class="card"><h2>اهداف موفقیت <small>${fa(g.length)} هدف</small></h2>
+    ${g.length?'':'<p class="empty">هنوز هدفی ننوشتی. یک هدف مشخص با زمان معین اضافه کن.</p>'}
+    ${g.map(x=>`<div class="goal"><h3>${esc(x.title)}</h3>
+      ${x.why?`<div class="meta">چرا مهم است: ${esc(x.why)}</div>`:''}
+      ${x.when?`<div class="meta">تا: ${esc(x.when)}</div>`:''}
+      <div class="row" style="justify-content:space-between"><span class="meta">پیشرفت</span><b id="gp-${x.id}">${fa(x.progress||0)}٪</b></div>
+      <input type="range" min="0" max="100" step="5" value="${x.progress||0}" data-gp="${x.id}" aria-label="پیشرفت">
+      <label class="meta" for="gn-${x.id}">قدم بعدی:</label>
+      <input type="text" id="gn-${x.id}" data-gn="${x.id}" value="${esc(x.next||'')}" placeholder="کوچک‌ترین قدم بعدی چیست؟">
+      <div class="row"><button class="btn danger small" type="button" data-a="goalDel" data-id="${x.id}">${pendingDel===x.id?'مطمئنی؟ دوباره بزن':'حذف هدف'}</button></div>
+    </div>`).join('')}
+    <form class="settings" data-f="goal">
+      <label>هدف جدید<input id="gTitle" type="text" placeholder="مثلاً: ۵۰ مشتری ثابت"></label>
+      <label>چرا برایم مهم است؟<input id="gWhy" type="text" placeholder="انگیزه‌ی واقعی من…"></label>
+      <label>تا چه زمانی؟<input id="gWhen" type="text" placeholder="مثلاً: پایان اسفند"></label>
+      <button class="btn" type="submit">افزودن هدف</button>
+    </form>
+  </section>
+  <section class="card"><h2>یادآورها <small>هر روز</small></h2>
+    <ul class="list">${r.map(x=>`<li class="rem ${x.on===false?'off':''}"><button type="button" class="check ${x.on!==false?'on':''}" data-a="remToggle" data-id="${x.id}" aria-label="فعال" aria-pressed="${x.on!==false}"></button><span class="time">${faTime(x.time)}</span><span class="t">${esc(x.text)}</span><button class="x" type="button" data-a="remDel" data-id="${x.id}" aria-label="حذف">×</button></li>`).join('')}</ul>
+    ${r.length?'':'<p class="empty">یادآوری نداری.</p>'}
+    <form class="addrow" data-f="rem"><input id="remTime" type="time" value="09:00" style="flex:none;width:7.5em"><input id="remText" type="text" placeholder="متن یادآور"><button class="btn" type="submit">افزودن</button></form>
+    ${('Notification' in window && Notification.permission!=='granted')?'<button class="btn ghost small" type="button" data-a="notif">اجازه‌ی اعلان بده</button>':''}
+    <p class="hint">یادآورها وقتی برنامه باز است یا تازه بسته شده اعلان می‌دهند. برای یادآور مطمئن وقتی گوشی خاموش یا برنامه کاملاً بسته است، همین ساعت‌ها را در «ساعت» گوشی هم آلارم بگذار.</p>
+  </section>`;
+}
+
+function viewBook(){
+  const keys=Object.keys(S.days).filter(k=>hasContent(S.days[k])||S.days[k].mit).sort().reverse();
+  if(!keys.length) return '<section class="card"><h2>دفتر روزها</h2><p class="empty">از امروز که بنویسی، روزهات این‌جا جمع می‌شن.</p></section>';
+  return `<section class="card"><h2>دفتر روزها <small>${fa(keys.length)} روز</small></h2>
+  ${keys.map(k=>{const d=S.days[k]; const g=d.gratitude.filter(x=>x.trim());
+    return `<details class="day" ${k===TODAY?'open':''}><summary><span>${esc(faDate(k))}</span><span class="chip">${d.mood?MOODS[d.mood-1]:''}</span></summary>
+    <div class="chips"><span class="chip">${fa(d.wins.length)} اتفاق خوب</span><span class="chip">${fa(g.length)} سپاس</span><span class="chip">${d.mitDone?'مهم‌ترین کار انجام شد':'مهم‌ترین کار انجام نشد'}</span></div>
+    ${d.mit?`<h4>مهم‌ترین کار</h4><p>${esc(d.mit)}</p>`:''}
+    ${d.wins.length?`<h4>اتفاقات خوب</h4><p>${d.wins.map(esc).join('\n')}</p>`:''}
+    ${g.length?`<h4>سپاسگزاری</h4><p>${g.map(esc).join('\n')}</p>`:''}
+    ${d.prayer.trim()?`<h4>گفتگو با خدا</h4><p>${esc(d.prayer)}</p>`:''}
+    ${d.lesson?`<h4>درس روز</h4><p>${esc(d.lesson)}</p>`:''}
+    <div class="row"><button class="btn ghost small" type="button" data-a="dayShare" data-v="${k}">اشتراک‌گذاری این روز</button></div>
+    </details>`;}).join('')}</section>`;
+}
+
+function viewSettings(){
+  return `<section class="card"><h2>تنظیمات <button class="btn ghost small" type="button" data-a="tab" data-v="today">بازگشت</button></h2>
+  <div class="settings">
+    <label>اسم شما<input id="sName" type="text" value="${esc(S.settings.name)}" placeholder="یوسف"></label>
+    <label>اسم کسب‌وکار<input id="sBiz" type="text" value="${esc(S.settings.business)}" placeholder="اسمی که در جمله‌های تأکیدی می‌آید"></label>
+  </div></section>
+  <section class="card"><h2>نصب روی گوشی</h2>
+    ${isStandalone()?'<p class="hint">برنامه نصب شده است.</p>':
+      deferredInstall?'<button class="btn" type="button" data-a="install">نصب «موفقیت یوسف»</button>':
+      isIOS?'<p class="hint">در Safari دکمه‌ی اشتراک (مربع با فلش رو به بالا) را بزن، بعد «Add to Home Screen».</p>':
+      '<p class="hint">در Chrome منوی سه‌نقطه را باز کن و «نصب برنامه» یا «افزودن به صفحه‌ی اصلی» را بزن.</p>'}
+  </section>
+  <section class="card"><h2>پشتیبان‌گیری</h2>
+    <p class="hint">همه‌ی نوشته‌ها و عکس‌ها فقط روی همین گوشی ذخیره می‌شوند. هر چند وقت یک‌بار یک فایل پشتیبان بگیر و جای امنی نگه دار (مثلاً در تلگرام برای خودت بفرست).</p>
+    <div class="row"><button class="btn" type="button" data-a="backup">گرفتن فایل پشتیبان</button>
+    <button class="btn soft" type="button" data-a="restorePick">بازگردانی از فایل</button></div>
+    ${pendingRestore?`<div class="nudge"><p>با بازگردانی، اطلاعات فعلی با محتوای فایل «${esc(pendingRestore.name)}» جایگزین می‌شود.</p></div>
+      <div class="row"><button class="btn danger" type="button" data-a="restoreGo">بله، جایگزین کن</button><button class="btn soft" type="button" data-a="restoreCancel">انصراف</button></div>`:''}
+  </section>`;
+}
+
+let pendingDel=null, pendingRestore=null;
+function render(){
+  const v={today:viewToday,heart:viewHeart,board:viewBoard,goals:viewGoals,book:viewBook,settings:viewSettings}[S.tab]();
+  $('app').innerHTML=header()+v;
+  $('nav').innerHTML=TABS.map(([k,l])=>`<button type="button" data-a="tab" data-v="${k}" class="${S.tab===k?'on':''}" aria-current="${S.tab===k?'page':'false'}">${ICONS[k]}${l}</button>`).join('');
+  paintTimer();
+}
+
+/* lightbox for one dream image */
+let lbDel=false;
+function openLightbox(id){
+  const im=IMAGES.find(x=>x.id===id); if(!im) return; lbDel=false;
+  const lb=$('lightbox');
+  lb.innerHTML=`<img src="${urlFor(im)}" alt="${esc(im.caption||'آرزو')}">
+   <input type="text" id="lbCap" value="${esc(im.caption||'')}" placeholder="این آرزو چیست؟ (مثلاً: خانه‌ی ویلایی کنار دریا)">
+   <select id="lbCat" aria-label="دسته"><option value="">بدون دسته</option>${CATS.map(c=>`<option ${im.cat===c?'selected':''}>${c}</option>`).join('')}</select>
+   <div class="row"><button class="btn" type="button" data-a="lbSave" data-id="${id}">ذخیره</button>
+   <button class="btn saffron" type="button" data-a="imgShare" data-id="${id}">اشتراک</button>
+   <button class="btn danger" type="button" data-a="lbDel" data-id="${id}" style="color:#F3A27A;border-color:#F3A27A">حذف</button>
+   <button class="btn soft" type="button" data-a="lbClose">بستن</button></div>`;
+  lb.hidden=false;
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click',async e=>{
+  const b=e.target.closest('[data-a]'); if(!b) return;
+  const a=b.dataset.a, d=day(TODAY), id=b.dataset.id;
+  if(a!=='goalDel') pendingDel=null;
+  switch(a){
+    case 'tab': S.tab=b.dataset.v; render(); window.scrollTo(0,0); return;
+    case 'closeToast': $('toast').hidden=true; return;
+    case 'install':
+      if(deferredInstall){ deferredInstall.prompt(); try{ await deferredInstall.userChoice; }catch(_){} deferredInstall=null; render(); }
+      else { S.tab='settings'; render(); }
+      return;
+    case 'affNext': d.affShift=(d.affShift||0)+1; persist(); break;
+    case 'affShare': shareText('«'+affirmation()+'»\n\n— موفقیت یوسف'); return;
+    case 'dayShare': shareText(daySummary(b.dataset.v)); return;
+    case 'mitToggle': if(!d.mit.trim()){ toast('اول مهم‌ترین کار امروز رو بنویس.'); return; } d.mitDone=!d.mitDone; if(d.mitDone) toast('عالی! مهم‌ترین کار امروز انجام شد.'); persist(); break;
+    case 'taskToggle': { const t=d.tasks.find(x=>x.id===id); if(t){ t.done=!t.done; persist(); } break; }
+    case 'taskDel': d.tasks=d.tasks.filter(x=>x.id!==id); persist(); break;
+    case 'winDel': d.wins.splice(+b.dataset.i,1); persist(); break;
+    case 'mood': d.mood=+b.dataset.v; persist(); break;
+    case 'timer': T.run=!T.run; clearInterval(T.id); if(T.run){ T.end=Date.now()+T.left*1000; T.id=setInterval(tick,1000); } paintTimer(); return;
+    case 'timerReset': T.run=false; clearInterval(T.id); T.left=25*60; paintTimer(); return;
+    case 'goalDel': if(pendingDel!==id){ pendingDel=id; break; } pendingDel=null; S.settings.goals=S.settings.goals.filter(x=>x.id!==id); persist(); break;
+    case 'remToggle': { const r=S.settings.reminders.find(x=>x.id===id); if(r){ r.on=r.on===false; persist(); } break; }
+    case 'remDel': S.settings.reminders=S.settings.reminders.filter(x=>x.id!==id); persist(); break;
+    case 'notif': try{ await Notification.requestPermission(); }catch(_){} break;
+    case 'pick': $('pick').click(); return;
+    case 'cat': S.boardCat=b.dataset.v; break;
+    case 'open': openLightbox(id); return;
+    case 'lbClose': $('lightbox').hidden=true; return;
+    case 'lbSave': { const im=IMAGES.find(x=>x.id===id); if(im){ im.caption=$('lbCap').value.trim(); im.cat=$('lbCat').value; await IDB.put(im); } $('lightbox').hidden=true; break; }
+    case 'lbDel': if(!lbDel){ lbDel=true; b.textContent='مطمئنی؟ دوباره بزن'; return; }
+      await IDB.del(id); IMAGES=IMAGES.filter(x=>x.id!==id); if(URLS[id]){ URL.revokeObjectURL(URLS[id]); delete URLS[id]; } $('lightbox').hidden=true; break;
+    case 'imgShare': { const im=IMAGES.find(x=>x.id===id); if(im) shareFile(im.blob,'arezoo.jpg',im.caption||'تابلوی آرزوهای من'); return; }
+    case 'boardShare': { toast('در حال ساخت تصویر تابلو…'); const list=S.boardCat?IMAGES.filter(i=>i.cat===S.boardCat):IMAGES; const blob=await boardCollage(list); if(blob) shareFile(blob,'tablo-arezoo.jpg','تابلوی آرزوهای من'); return; }
+    case 'backup': await doBackup(); return;
+    case 'restorePick': $('restore').click(); return;
+    case 'restoreCancel': pendingRestore=null; break;
+    case 'restoreGo': await doRestore(); return;
+    default: return;
+  }
+  render();
+});
+
+document.addEventListener('submit',e=>{
+  const f=e.target.closest('[data-f]'); if(!f) return; e.preventDefault();
+  const d=day(TODAY), val=id=>$(id).value.trim();
+  switch(f.dataset.f){
+    case 'task': { const t=val('newTask'); if(!t) return; d.tasks.push({id:uid(),t,done:false}); if(d.tasks.length>5) toast('بیشتر از ۵ کار؟ مدیر خوب اولویت‌بندی می‌کنه. مطمئنی همه امروز لازمه؟'); break; }
+    case 'win': { const t=val('newWin'); if(!t) return; d.wins.push(t); break; }
+    case 'goal': { const t=val('gTitle'); if(!t){ toast('عنوان هدف را بنویس.'); return; } S.settings.goals.push({id:uid(),title:t,why:val('gWhy'),when:val('gWhen'),progress:0,next:''}); break; }
+    case 'rem': { const tm=$('remTime').value, t=val('remText'); if(!tm||!t){ toast('ساعت و متن یادآور را وارد کن.'); return; } S.settings.reminders.push({id:uid(),time:tm,text:t,on:true}); break; }
+  }
+  persist(); render();
+  const again={task:'newTask',win:'newWin'}[f.dataset.f]; if(again) $(again)?.focus();
+});
+
+document.addEventListener('input',e=>{
+  const el=e.target, d=day(TODAY);
+  if(el.id==='mit'){ d.mit=el.value; if(!el.value.trim()) d.mitDone=false; }
+  else if(el.dataset.g!==undefined){ d.gratitude[+el.dataset.g]=el.value; }
+  else if(el.id==='prayer'){ d.prayer=el.value; }
+  else if(el.id==='lesson'){ d.lesson=el.value; }
+  else if(el.id==='tomorrow'){ d.tomorrow=el.value; }
+  else if(el.dataset.gp){ const g=S.settings.goals.find(x=>x.id===el.dataset.gp); if(!g) return; g.progress=+el.value; $('gp-'+g.id).textContent=fa(g.progress)+'٪'; }
+  else if(el.dataset.gn){ const g=S.settings.goals.find(x=>x.id===el.dataset.gn); if(!g) return; g.next=el.value; }
+  else if(el.id==='sName'){ S.settings.name=el.value; }
+  else if(el.id==='sBiz'){ S.settings.business=el.value; }
+  else return;
+  persist();
+});
+
+$('pick').addEventListener('change',async e=>{
+  const files=[...e.target.files]; e.target.value=''; if(!files.length) return;
+  toast('در حال افزودن '+fa(files.length)+' عکس…');
+  let added=0, lastId=null;
+  for(const f of files){
+    try{ const blob=await shrink(f); const im={id:uid(),blob,caption:'',cat:'',created:Date.now()+added}; await IDB.put(im); IMAGES.unshift(im); added++; lastId=im.id; }
+    catch(err){ toast('یکی از عکس‌ها باز نشد. عکس دیگری انتخاب کن.'); }
+  }
+  S.boardCat=''; render();
+  if(added===1) openLightbox(lastId); else if(added) toast(fa(added)+' عکس اضافه شد. روی هر عکس بزن تا برایش توضیح بنویسی.');
+});
+
+/* backup & restore */
+const blobToDataURL = b => new Promise(res=>{ const r=new FileReader(); r.onload=()=>res(r.result); r.readAsDataURL(b); });
+async function doBackup(){
+  toast('در حال آماده‌سازی فایل پشتیبان…');
+  const imgs=[]; for(const im of IMAGES) imgs.push({id:im.id,caption:im.caption,cat:im.cat,created:im.created,data:await blobToDataURL(im.blob)});
+  const json=JSON.stringify({app:'movafaghiat-yousef',version:1,savedAt:new Date().toISOString(),settings:S.settings,days:S.days,images:imgs});
+  const blob=new Blob([json],{type:'application/json'}); const name='movafaghiat-yousef-'+TODAY+'.json';
+  const file=new File([blob],name,{type:'application/json'});
+  try{ if(navigator.canShare && navigator.canShare({files:[file]})){ await navigator.share({files:[file],title:'پشتیبان موفقیت یوسف'}); return; } }catch(e){ if(e && e.name==='AbortError') return; }
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove();
+  toast('فایل پشتیبان دانلود شد.');
+}
+$('restore').addEventListener('change',async e=>{
+  const f=e.target.files[0]; e.target.value=''; if(!f) return;
+  try{ const j=JSON.parse(await f.text()); if(j.app!=='movafaghiat-yousef') throw 0; pendingRestore={name:f.name,data:j}; S.tab='settings'; render(); }
+  catch(err){ toast('این فایل، پشتیبان «موفقیت یوسف» نیست.'); }
+});
+async function doRestore(){
+  const j=pendingRestore.data; pendingRestore=null;
+  S.settings=Object.assign({name:'یوسف',business:'',goals:[],reminders:[]},j.settings||{}); S.days=j.days||{}; day(TODAY);
+  try{ localStorage.setItem(LS, JSON.stringify({settings:S.settings,days:S.days})); }catch(e){}
+  try{
+    await IDB.clear(); Object.values(URLS).forEach(u=>URL.revokeObjectURL(u)); for(const k in URLS) delete URLS[k];
+    for(const im of (j.images||[])){ const blob=await (await fetch(im.data)).blob(); await IDB.put({id:im.id,caption:im.caption||'',cat:im.cat||'',created:im.created||Date.now(),blob}); }
+    IMAGES=(await IDB.all()).sort((a,b)=>b.created-a.created);
+  }catch(e){ toast('عکس‌ها کامل بازگردانی نشدند.'); }
+  render(); toast('اطلاعات بازگردانی شد.');
+}
+
+/* carry yesterday's plan into today's most important task */
+(function(){ const y=new Date(); y.setDate(y.getDate()-1); const yd=S.days[keyOf(y)]; const d=day(TODAY); if(yd && yd.tomorrow && !d.mit){ d.mit=yd.tomorrow; persist(); } })();
+
+/* refresh when the day changes while the app stays open */
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden && keyOf(new Date())!==TODAY) location.reload(); });
+
+if('serviceWorker' in navigator && location.protocol!=='file:') navigator.serviceWorker.register('sw.js').catch(()=>{});
+
+render();
+loadImages().then(render);
+})();
+</script>
+</body>
+</html>
